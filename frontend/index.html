@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pitch Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="glass-background"></div>
+  <div class="circles">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+  </div>
+
+  <div class="container">
+    <header class="app-header">
+      <h1>🎬 Pitch <span>Visualizer</span></h1>
+      <p>Transform your narrative into an AI-generated storyboard seamlessly.</p>
+    </header>
+
+    <main class="app-main">
+      <section class="input-section glass-panel">
+        <form id="generate-form">
+          <div class="form-group">
+            <label for="style-select">Visual Style</label>
+            <div class="select-wrapper">
+              <select id="style-select" required>
+                <option value="" disabled selected>Loading styles...</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="narrative-input">Narrative Paragraph</label>
+            <textarea id="narrative-input" rows="6" placeholder="A lone astronaut wanders through a glowing alien forest, accompanied by a hovering drone. The tension is palpable as they discover an ancient, metallic structure pulsating with a strange blue light..." required minlength="20"></textarea>
+            <div class="char-count"><span id="char-current">0</span> / 3000</div>
+          </div>
+
+          <button type="submit" class="btn-primary" id="generate-btn">
+            <span class="btn-text">Generate Storyboard</span>
+            <div class="loader-spinner hidden" id="generate-spinner"></div>
+          </button>
+        </form>
+        <div id="error-message" class="error-banner hidden"></div>
+      </section>
+
+      <section id="results-section" class="results-section hidden">
+        <div class="results-header">
+          <h2>Your Storyboard</h2>
+          <button id="export-btn" class="btn-secondary">Export HTML</button>
+        </div>
+        
+        <div id="storyboard-grid" class="storyboard-grid">
+          <!-- Storyboard cards injected here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
