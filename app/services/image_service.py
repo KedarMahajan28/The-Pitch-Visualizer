@@ -35,6 +35,7 @@ async def generate_image(prompt: str, negative_prompt: str = "") -> tuple[str, s
         image = await asyncio.to_thread(
             client.text_to_image,
             prompt,
+            negative_prompt=negative_prompt,
             model=HF_MODEL,
         )
 

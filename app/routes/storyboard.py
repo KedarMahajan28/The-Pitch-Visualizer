@@ -3,6 +3,7 @@
 import asyncio
 import logging
 import os
+import re
 
 from fastapi import APIRouter, HTTPException
 
@@ -35,9 +36,12 @@ async def generate_storyboard(request: StoryboardRequest) -> StoryboardResponse:
     provider = AIProvider()
 
     # ── Step 1: Segment narrative into Visual Beats ──────────────────────────
+    sentences = [s for s in re.split(r'[.!?]+', request.narrative) if s.strip()]
+    dynamic_beats = min(len(sentences) or 1, MAX_BEATS)
+
     try:
         beats, provider_chain = await provider.segment_into_beats(
-            request.narrative, request.style, max_beats=MAX_BEATS
+            request.narrative, request.style, max_beats=dynamic_beats
         )
     except RuntimeError as exc:
         logger.error("LLM provider chain exhausted: %s", exc)
