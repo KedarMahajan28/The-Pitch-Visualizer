@@ -1,3 +1,4 @@
+Live: https://the-pitch-visualizer-sxjv.onrender.com/
 # 🎬 The Pitch Visualizer
 
 The Pitch Visualizer is a web application that transforms narrative paragraphs into AI-generated visual storyboards seamlessly. It intelligently segments text into distinct visual beats and generates cohesive storyboard images corresponding to each segment, all wrapped in a sleek glassmorphic UI.
